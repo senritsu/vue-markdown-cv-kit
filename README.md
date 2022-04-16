@@ -18,7 +18,9 @@ At the moment the required markdown structure is pretty much fixed, and usage re
 - Preview and adjust
 - Print using the browser
 
-## Profile
+## Required Markdown structure
+
+### Profile
 
 Applicant name is the top level header of the markdown file. Directly below basic profile info is supplied as a list with simple labels prefixed
 
@@ -32,7 +34,7 @@ Applicant name is the top level header of the markdown file. Directly below basi
 Mandatory fields: `Positions` (comma separated), `Location`, `Phone`, `Email`
 Optional social links (as markdown links, see above): `Homepage`, `Linkedin`, `GitHub`, `Xing`
 
-## Education
+### Education
 
 A level 2 header somewhere in the markdown file that contains the word `education` in any casing. Contains any number of level 3 or 4 headers for individual entries.
 
@@ -51,7 +53,7 @@ Here is some info about extracurricular activities
 
 `Department` and `Thesis` are optional, as is the block for extracurricular activities.
 
-## Work experience
+### Work experience
 
 A level 2 header somewhere in the markdown file that contains the word `experience` in any casing. Contains any number of level 3 or 4 headers for individual entries.
 
@@ -72,19 +74,19 @@ Inventor, Entrepreneur, CEO
 - Chiefed a lot of executives
 ```
 
-## Skills
+### Skills
 
 TODO
 
-## Languages
+### Languages
 
 TODO
 
-## Interests / Hobbies
+### Interests / Hobbies
 
 TODO
 
-## Individual projects
+### Individual projects
 
 TODO
 
