@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,700;1,100;1,400;1,500;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+html {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-darkgray: #333333;
+  --color-gray: #5d5d5d;
+  --color-lightgray: #999999;
+
+  --color-green: #c2e15f;
+  --color-orange: #fda333;
+  --color-purple: #d3a4f9;
+  --color-red: #fb4485;
+  --color-blue: #6ce0f1;
+
+  --color-awesome-emerald: #00a388;
+  --color-awesome-skyblue: #0395de;
+  --color-awesome-red: #dc3522;
+  --color-awesome-pink: #ef4089;
+  --color-awesome-orange: #ff6138;
+  --color-awesome-nephritis: #26ae60;
+  --color-awesome-concrete: #95a5a6;
+  --color-awesome-darknight: #131a28;
+
+  --color-awesome-purple: hsl(280deg 75% 62%);
+
+  --color-awesome: var(--color-awesome-purple);
+
+  --color-text: var(--color-gray);
+  --color-text-dark: var(--color-darkgray);
+  --color-text-light: var(--color-lightgray);
+  --color-divider: var(--color-gray);
+
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 12pt;
+}
