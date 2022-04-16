@@ -10,7 +10,13 @@ Output is currently styled to be printed on A4 paper using the default browser p
 
 The basic idea is to be able to write the CV as a simple readable markdown file conforming to a certain schema, and use the Vue components to assemble it into a nice-looking CV.
 
-At the moment the required markdown structure is pretty much fixed.
+At the moment the required markdown structure is pretty much fixed, and usage requires checking out the source. If possible I would like to flesh it out a bit and provide it as a hosted browser app to make it actually usable by other people.
+
+- Clone the repo
+- Add your own CV at `assets/cv.md`
+- `npm run dev`
+- Preview and adjust
+- Print using the browser
 
 ## Profile
 
