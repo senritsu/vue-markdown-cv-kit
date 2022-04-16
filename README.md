@@ -1,4 +1,4 @@
-# cv-gen (name pending)
+# Vue+Markdown CV Kit
 
 A collection of components to build a CV.
 
