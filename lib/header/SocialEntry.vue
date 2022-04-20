@@ -29,5 +29,6 @@ defineProps<{
 
 .social-entry svg {
   margin-right: 0.3em;
+  font-size: 1.25em;
 }
 </style>

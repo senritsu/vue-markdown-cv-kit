@@ -6,7 +6,8 @@
 
 <style scoped>
 .separator {
+  font-size: 1.5em;
   font-weight: bold;
-  margin: 0 1em;
+  margin: 0 0.5em;
 }
 </style>

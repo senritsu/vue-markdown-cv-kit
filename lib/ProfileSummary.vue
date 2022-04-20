@@ -5,11 +5,11 @@ defineProps<{
 </script>
 
 <template>
-  <span>{{ summary }}</span>
+  <p>{{ summary }}</p>
 </template>
 
 <style scoped>
-span {
+p {
   color: var(--color-text);
   font-size: 9pt;
 }

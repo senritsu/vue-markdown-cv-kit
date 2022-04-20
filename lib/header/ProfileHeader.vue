@@ -105,6 +105,7 @@ const nameParts = computed(() => {
     font-size: 6.8pt;
     display: flex;
     color: var(--color-text);
+    align-items: baseline;
   }
 
   .quote {
