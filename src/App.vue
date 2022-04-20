@@ -6,13 +6,14 @@ import {
   ProfileHeader,
   PageFooter,
   ProfileSummary,
-  ResumeSection,
+  TopLevelSection,
   EmploymentEntry,
   EducationEntry,
   ProjectEntry,
   SkillsOverview,
   Languages,
   TagList,
+  CreditsFooter,
 } from '../lib'
 
 // TODO file picker, localstorage, etc.
@@ -31,37 +32,37 @@ const color = ref('purple')
     <section class="page">
       <ProfileHeader :profile="cv.profile"></ProfileHeader>
 
-      <ResumeSection name="Summary">
+      <TopLevelSection name="Summary">
         <ProfileSummary :summary="cv.profile.summary"></ProfileSummary>
-      </ResumeSection>
+      </TopLevelSection>
 
-      <ResumeSection name="Professional Experience">
+      <TopLevelSection :name="cv.experience.label">
         <EmploymentEntry
-          v-for="(item, i) in cv.experience"
+          v-for="(item, i) in cv.experience.entries"
           :item="item"
           :condensed="i > 0"
         ></EmploymentEntry>
-      </ResumeSection>
+      </TopLevelSection>
 
-      <ResumeSection name="Education">
+      <TopLevelSection :name="cv.education.label">
         <EducationEntry
-          v-for="(item, i) in cv.education"
+          v-for="(item, i) in cv.education.entries"
           :item="item"
           :condensed="i > 0"
         ></EducationEntry>
-      </ResumeSection>
+      </TopLevelSection>
 
-      <ResumeSection name="Skills">
-        <SkillsOverview :groups="cv.SkillsOverview"></SkillsOverview>
-      </ResumeSection>
+      <TopLevelSection :name="cv.skillGroups.label">
+        <SkillsOverview :groups="cv.skillGroups.entries"></SkillsOverview>
+      </TopLevelSection>
 
-      <ResumeSection name="Languages">
-        <Languages :languages="cv.languages"></Languages>
-      </ResumeSection>
+      <TopLevelSection :name="cv.languages.label">
+        <Languages :languages="cv.languages.entries"></Languages>
+      </TopLevelSection>
 
-      <ResumeSection name="Adjacent Interests">
-        <TagList :tags="cv.interests"></TagList>
-      </ResumeSection>
+      <TopLevelSection :name="cv.interests.label">
+        <TagList :tags="cv.interests.entries"></TagList>
+      </TopLevelSection>
 
       <PageFooter
         :page="1"
@@ -70,12 +71,14 @@ const color = ref('purple')
       ></PageFooter>
     </section>
     <section class="page">
-      <ResumeSection name="Select Projects">
+      <TopLevelSection :name="cv.projects.label">
         <ProjectEntry
-          v-for="(item, i) in cv.projects"
+          v-for="(item, i) in cv.projects.entries"
           :item="item"
         ></ProjectEntry>
-      </ResumeSection>
+      </TopLevelSection>
+
+      <CreditsFooter></CreditsFooter>
 
       <PageFooter
         :page="2"

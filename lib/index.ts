@@ -1,5 +1,5 @@
 export { default as ProfileHeader } from './header/ProfileHeader.vue'
-export { default as ResumeSection } from './components/ResumeSection.vue'
+export { default as TopLevelSection } from './components/TopLevelSection.vue'
 export { default as PageFooter } from './footer/PageFooter.vue'
 export { default as EducationEntry } from './EducationEntry.vue'
 export { default as Languages } from './Languages.vue'
@@ -8,5 +8,6 @@ export { default as SkillsOverview } from './SkillsOverview.vue'
 export { default as ProfileSummary } from './ProfileSummary.vue'
 export { default as TagList } from './components/TagList.vue'
 export { default as EmploymentEntry } from './EmploymentEntry.vue'
+export { default as CreditsFooter } from './footer/CreditsFooter.vue'
 
 export * from './types'

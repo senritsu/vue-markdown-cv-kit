@@ -142,7 +142,7 @@ export function parseCv(markdownSource: string) {
 
   if (!skillGroup) throw new Error('missing skill data')
 
-  const SkillsOverview = groupByHeader(skillGroup.lines, 4).map((group) => {
+  const skillGroups = groupByHeader(skillGroup.lines, 4).map((group) => {
     const summary = getSummary(group)
 
     if (!summary) throw new Error('missing project summary')
@@ -174,11 +174,11 @@ export function parseCv(markdownSource: string) {
 
   if (!interests) throw new Error('missing interests content')
 
-  const projectGroup = toplevelGroups.find((x) => x.title.match(/projects/i))
+  const projectsGroup = toplevelGroups.find((x) => x.title.match(/projects/i))
 
-  if (!projectGroup) throw new Error('missing project data')
+  if (!projectsGroup) throw new Error('missing project data')
 
-  const projectEntries = groupByHeader(projectGroup.lines, 4).map((group) => {
+  const projectEntries = groupByHeader(projectsGroup.lines, 4).map((group) => {
     const [time, name, customer] = group.title.split(/\s*\/\s*/)
 
     const summary = getSummary(group)
@@ -201,12 +201,12 @@ export function parseCv(markdownSource: string) {
 
   return {
     profile,
-    experience: employmentEntries,
-    education: educationEntries,
-    projects: projectEntries,
-    SkillsOverview,
-    languages,
-    interests,
+    experience: { label: employmentGroup.title, entries: employmentEntries },
+    education: { label: educationGroup.title, entries: educationEntries },
+    projects: { label: projectsGroup.title, entries: projectEntries },
+    skillGroups: { label: skillGroup.title, entries: skillGroups },
+    languages: { label: languagesGroup.title, entries: languages },
+    interests: { label: interestsGroup.title, entries: interests },
     date: new Intl.DateTimeFormat('en-US', { dateStyle: 'long' }).format(
       new Date()
     ),
