@@ -8,9 +8,9 @@ defineProps<{
 
 <template>
   <footer>
-    <span>{{ date }}</span>
-    <span>{{ name }} • CV</span>
-    <span>{{ page }}</span>
+    <div>{{ date }}</div>
+    <div>{{ name }} • CV</div>
+    <div>{{ page }}</div>
   </footer>
 </template>
 
@@ -18,10 +18,23 @@ defineProps<{
 footer {
   margin-top: auto;
   display: flex;
-  justify-content: space-between;
 
   font-size: 8pt;
   font-variant: small-caps;
   color: var(--color-text-light);
+}
+
+footer > * {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+footer > :first-child {
+  justify-content: flex-start;
+}
+
+footer > :last-child {
+  justify-content: flex-end;
 }
 </style>

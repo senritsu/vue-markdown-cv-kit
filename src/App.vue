@@ -24,10 +24,11 @@ import { parseCv } from '../lib/parse'
 const cv = parseCv(cvSource)
 
 const color = ref('purple')
+const hideRatings = ref(false)
 </script>
 
 <template>
-  <Toolbar v-model:color="color"></Toolbar>
+  <Toolbar v-model:color="color" v-model:hideRatings="hideRatings"></Toolbar>
   <main :style="{ '--color-awesome': `var(--color-awesome-${color})` }">
     <section class="page">
       <ProfileHeader :profile="cv.profile"></ProfileHeader>
@@ -52,8 +53,11 @@ const color = ref('purple')
         ></EducationEntry>
       </TopLevelSection>
 
-      <TopLevelSection :name="cv.skillGroups.label">
-        <SkillsOverview :groups="cv.skillGroups.entries"></SkillsOverview>
+      <TopLevelSection :name="cv.groupedSkills.label">
+        <SkillsOverview
+          :groups="cv.groupedSkills.entries"
+          v-bind="{ hideRatings }"
+        ></SkillsOverview>
       </TopLevelSection>
 
       <TopLevelSection :name="cv.languages.label">

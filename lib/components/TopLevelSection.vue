@@ -35,7 +35,7 @@ const hidden = ref(false)
   .section-header {
     display: flex;
     align-items: baseline;
-    margin-top: 4mm;
+    margin-top: 5mm;
     margin-bottom: 1mm;
   }
 

@@ -2,17 +2,22 @@
 import SkillGroup from './components/SkillGroup.vue'
 
 defineProps<{
+  hideRatings?: boolean
   groups: {
     name: string
     skills: { name: string; rating: number }[]
-    unrated?: string
+    unrated?: string[]
   }[]
 }>()
 </script>
 
 <template>
   <div class="skills">
-    <SkillGroup v-for="group in groups" v-bind="group"></SkillGroup>
+    <SkillGroup
+      v-for="group in groups"
+      v-bind="group"
+      :hide-ratings="hideRatings"
+    ></SkillGroup>
   </div>
 </template>
 

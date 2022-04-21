@@ -1,11 +1,24 @@
 <script setup lang="ts">
-defineProps<{
+import { computed } from 'vue'
+
+const props = defineProps<{
   color: string
+  hideRatings: boolean
 }>()
 
 const emit = defineEmits<{
   (e: 'update:color', color: string): void
+  (e: 'update:hideRatings', value: boolean): void
 }>()
+
+const hideRatingsModel = computed<boolean>({
+  get() {
+    return props.hideRatings
+  },
+  set(value) {
+    emit('update:hideRatings', value)
+  },
+})
 
 const colors = [
   'emerald',
@@ -31,6 +44,9 @@ const colors = [
         @click="emit('update:color', entry)"
       ></button>
     </div>
+    <label for="hide-ratings"
+      ><input type="checkbox" v-model="hideRatingsModel" />Hide ratings</label
+    >
   </aside>
 </template>
 
