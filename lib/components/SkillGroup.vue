@@ -14,9 +14,15 @@ defineProps<{
 <template>
   <div class="group">
     <h5>{{ name }}</h5>
-    <ul v-if="hideRatings" class="skill-list">
+    <!-- <ul v-if="hideRatings" class="skill-list">
       <li class="skill-item" v-for="skill in skills">{{ skill.name }}</li>
-    </ul>
+    </ul> -->
+    <div v-if="hideRatings" class="skill" v-for="skill in skills">
+      <span>{{ skill.name }}</span>
+      <div class="icon">
+        <fa-icon :icon="faBookmark" />
+      </div>
+    </div>
 
     <div v-else class="skill" v-for="skill in skills">
       <span>{{ skill.name }}</span>
@@ -60,6 +66,11 @@ defineProps<{
     transition: color 0.3s;
     display: flex;
     gap: 0.4em;
+  }
+
+  .icon {
+    font-size: 0.75em;
+    color: var(--color-awesome);
   }
 
   .rating .empty {
