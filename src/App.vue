@@ -75,12 +75,14 @@ const hideRatings = ref(false)
       ></PageFooter>
     </section>
     <section class="page">
-      <TopLevelSection :name="cv.projects.label">
-        <ProjectEntry
-          v-for="(item, i) in cv.projects.entries"
-          :item="item"
-        ></ProjectEntry>
-      </TopLevelSection>
+      <template v-for="projectsGroup in cv.projects">
+        <TopLevelSection :name="projectsGroup.label">
+          <ProjectEntry
+            v-for="(item, i) in projectsGroup.entries"
+            :item="item"
+          ></ProjectEntry>
+        </TopLevelSection>
+      </template>
 
       <CreditsFooter></CreditsFooter>
 

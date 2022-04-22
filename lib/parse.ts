@@ -138,7 +138,7 @@ export function parseCv(markdownSource: string) {
     }
   )
 
-  const skillGroup = toplevelGroups.find((x) => x.title.match(/skills/i))
+  const skillGroup = toplevelGroups.find((x) => x.title.match(/skill/i))
 
   if (!skillGroup) throw new Error('missing skill data')
 
@@ -158,7 +158,7 @@ export function parseCv(markdownSource: string) {
     }
   })
 
-  const languagesGroup = toplevelGroups.find((x) => x.title.match(/languages/i))
+  const languagesGroup = toplevelGroups.find((x) => x.title.match(/language/i))
 
   if (!languagesGroup) throw new Error('missing languages data')
 
@@ -166,7 +166,7 @@ export function parseCv(markdownSource: string) {
     .map((x) => x.split(/\s*:\s*/))
     .map(([name, proficiency]) => ({ name, proficiency }))
 
-  const interestsGroup = toplevelGroups.find((x) => x.title.match(/interests/i))
+  const interestsGroup = toplevelGroups.find((x) => x.title.match(/interest/i))
 
   if (!interestsGroup) throw new Error('missing interests section')
 
@@ -174,36 +174,40 @@ export function parseCv(markdownSource: string) {
 
   if (!interests) throw new Error('missing interests content')
 
-  const projectsGroup = toplevelGroups.find((x) => x.title.match(/projects/i))
+  const projectsGroups = toplevelGroups.filter((x) => x.title.match(/project/i))
 
-  if (!projectsGroup) throw new Error('missing project data')
+  if (!projectsGroups.length) throw new Error('missing project data')
 
-  const projectEntries = groupByHeader(projectsGroup.lines, 4).map((group) => {
-    const [time, name, customer] = group.title.split(/\s*\/\s*/)
+  const projects = projectsGroups.map((group) => {
+    const entries = groupByHeader(group.lines, 4).map((group) => {
+      const [time, name, customer] = group.title.split(/\s*\/\s*/)
 
-    const summary = getSummary(group)
+      const summary = getSummary(group)
 
-    if (!summary) throw new Error('missing project summary')
+      if (!summary) throw new Error('missing project summary')
 
-    const [position, description] = summary.split(/\s*,\s*/)
+      const [position, description] = summary.split(/\s*,\s*/)
 
-    const details = getBulletPoints(group)
+      const details = getBulletPoints(group)
 
-    return {
-      time,
-      name,
-      position,
-      description,
-      customer,
-      details,
-    }
+      return {
+        time,
+        name,
+        position,
+        description,
+        customer,
+        details,
+      }
+    })
+
+    return { label: group.title, entries }
   })
 
   return {
     profile,
     experience: { label: employmentGroup.title, entries: employmentEntries },
     education: { label: educationGroup.title, entries: educationEntries },
-    projects: { label: projectsGroup.title, entries: projectEntries },
+    projects,
     groupedSkills: { label: skillGroup.title, entries: groupedSkills },
     languages: { label: languagesGroup.title, entries: languages },
     interests: { label: interestsGroup.title, entries: interests },
