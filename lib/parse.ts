@@ -166,7 +166,9 @@ export function parseCv(markdownSource: string) {
     .map((x) => x.split(/\s*:\s*/))
     .map(([name, proficiency]) => ({ name, proficiency }))
 
-  const interestsGroup = toplevelGroups.find((x) => x.title.match(/interest/i))
+  const interestsGroup = toplevelGroups.find((x) =>
+    x.title.match(/interest|hobby|hobbies/i)
+  )
 
   if (!interestsGroup) throw new Error('missing interests section')
 

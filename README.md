@@ -20,15 +20,21 @@ At the moment the required markdown structure is pretty much fixed, and usage re
 
 ## Required Markdown structure
 
+Generally information is pulled out of markdown blocks (headgins followed by a list and/or some text) at certain heading levels. Order of headings is unimportant.
+
+Blocks are identified based on certain case-insensitive keywords in the heading.
+
 ### Profile
 
-Applicant name is the top level header of the markdown file. Directly below basic profile info is supplied as a list with simple labels prefixed
+Applicant name is the top level 1 heading of the markdown file.
+
+Contains basic profile info as a list with label prefixes.
 
 ```md
 # John Johnson
 
 - Positions: Software Developer
-- GitHub: [senritsu](https://github.com/senritsu)
+- GitHub: [theonlytruejohnjohnson](https://github.com/theonlytruejohnjohnson)
 ```
 
 Mandatory fields: `Positions` (comma separated), `Location`, `Phone`, `Email`
@@ -36,7 +42,7 @@ Optional social links (as markdown links, see above): `Homepage`, `Linkedin`, `G
 
 ### Education
 
-A level 2 header somewhere in the markdown file that contains the word `education` in any casing. Contains any number of level 3 or 4 headers for individual entries.
+Level 1 or 2 heading containing `education`. Contains any number of level 3 or 4 headers for individual entries.
 
 ```md
 ## Here be eduational things
@@ -55,7 +61,7 @@ Here is some info about extracurricular activities
 
 ### Work experience
 
-A level 2 header somewhere in the markdown file that contains the word `experience` in any casing. Contains any number of level 3 or 4 headers for individual entries.
+Level 1 or 2 heading containing `experience`. Contains any number of level 3 or 4 headers for individual entries.
 
 ```md
 ## The best work experience
@@ -74,21 +80,92 @@ Inventor, Entrepreneur, CEO
 - Chiefed a lot of executives
 ```
 
+Comma-separated roles are mandatory, bullet points are optional.
+
 ### Skills
 
-TODO
+Level 1 or 2 heading containing `skill`. Contains any number (but preferrably 3 for layout reasons) of skill groups as level 3 or 4 headers.
+
+Each group contains a number of highlighted skills with a rating as bullet points, as well as an additional comma-separated list of less-important skills in that category.
+
+```md
+## My skills
+
+#### Programming languages
+
+- Rockstar: 5
+- Whitespace: 4
+
+Piet, Malbolge, Shakespeare
+
+#### Frameworks
+
+- Framework 1: 5
+- Framework 2: 3
+
+Other Framework, Yet another framework
+
+#### Modes of transportation
+
+- Bicycle: 4
+- Car: 3
+- Unicycle: 2
+
+Rollerskates, Ski, Wingsuit
+```
+
+Bullet points are mandatory. Rating is optional, if you want to display it use a scale of 1-5 as that is the only scale supported right now. Additional skills are optional.
 
 ### Languages
 
-TODO
+Level 1 or 2 heading containing `language`. Contains bullet points with language name and fluency rating.
+
+```md
+## Languages
+
+- Klingon: Native
+- Sindarin: Fluent
+- Valyrian: Not terrible
+```
+
+Fluency rating can be arbitrary text, use of a consistent rating system is recommended.
 
 ### Interests / Hobbies
 
-TODO
+Level 1 or 2 heading containing `interest`, `hobbies` or `hobby`. Contains a comma-separated list of interests.
+
+```md
+## Interested in
+
+Knolling, Speedruns, Juggling, Speedpainting, Tank-driving, Parachuting
+```
 
 ### Individual projects
 
-TODO
+Any number of level 1 or 2 heading containing `project`. Contains any number of level 3 or 4 headers detailing a single project.
+
+```md
+## Cool projects
+
+#### 2020 - 2022 / Space elevator / Some company
+
+Lead cable specialist
+
+- Arranged unobtainium cables with highest precision
+- Developed new cable arrangement to maximize load-bearing capacity
+- Climbed up the cable to LEO
+
+## Boring projects
+
+#### 2018-2020 / Landfill redesign / Some shitty company
+
+Ditch digger
+
+- Dug ditches all day long
+- Moved garbage around
+```
+
+Only a single project role is supported right now.
 
 # Credit
 
